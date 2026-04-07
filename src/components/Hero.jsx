@@ -16,6 +16,7 @@ const Hero = () => {
             className="w-full max-w-xs md:max-w-sm lg:max-w-lg mx-auto"
             width="600"
             height="590"
+            fetchpriority="high"
           />
         </div>
 

@@ -7,7 +7,7 @@ const sablesDiamant = {
   subtitle: "Notre produit Signature",
   description:
     "Notre sablé est un petit biscuit au beurre, rond, doré et très gourmand. Le sucre partiellement caramélisé lui donne un aspect brillant sur la tranche. Sa texture est croustillante et son cœur délicieusement fondant. Quelle que soit la saveur, ce sablé ne vous laissera pas indifférent !",
-  image: "/products/sables-sucres.jpg",
+  image: "/products/sables-sucres.webp",
   saveursSucrees: [
     {
       name: "Vanille & Fleur de Sel",
