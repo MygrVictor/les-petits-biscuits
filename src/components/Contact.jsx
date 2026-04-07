@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import {
   Phone,
   Mail,
@@ -7,20 +8,55 @@ import {
   Clock,
   MessageCircle,
   Facebook,
+  CheckCircle,
+  AlertCircle,
+  Loader2,
 } from "lucide-react";
 
+// ⚠️ CONFIGURATION EMAILJS — À remplir avec vos identifiants
+// Créez un compte gratuit sur https://www.emailjs.com/
+// 1. Service ID : Dashboard > Email Services > Ajoutez votre service Gmail/Outlook
+// 2. Template ID : Dashboard > Email Templates > Créez un template
+// 3. Public Key : Dashboard > Account > General > Public Key
+const EMAILJS_SERVICE_ID = "service_i2kiti6";
+const EMAILJS_TEMPLATE_ID = "template_qi8w4ey";
+const EMAILJS_PUBLIC_KEY = "MZFKELW6532SW3SeF";
+
 const Contact = () => {
+  const formRef = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "particulier",
+    subject: "Particulier gourmand",
     message: "",
   });
+  const [sendStatus, setSendStatus] = useState(null); // null | 'sending' | 'success' | 'error'
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Merci pour votre message ! Nous vous répondons sous 48h.");
-    setFormData({ name: "", email: "", subject: "particulier", message: "" });
+    setSendStatus("sending");
+
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        EMAILJS_PUBLIC_KEY,
+      );
+      setSendStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        subject: "Particulier gourmand",
+        message: "",
+      });
+      // Réinitialiser le message de succès après 5 secondes
+      setTimeout(() => setSendStatus(null), 5000);
+    } catch (error) {
+      console.error("Erreur EmailJS:", error);
+      setSendStatus("error");
+      setTimeout(() => setSendStatus(null), 5000);
+    }
   };
 
   const handleChange = (e) => {
@@ -79,17 +115,7 @@ const Contact = () => {
                 <a
                   href="tel:0240393056"
                   className="flex items-center gap-4 group"
-                >
-                  <div className="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-gold/30 transition-colors">
-                    <Phone className="w-5 h-5 text-gold" />
-                  </div>
-                  <div>
-                    <p className="text-charcoal-900 group-hover:text-gold transition-colors font-medium">
-                      02 40 39 30 56
-                    </p>
-                    <p className="text-sm text-charcoal-500">Boutique</p>
-                  </div>
-                </a>
+                ></a>
                 <a
                   href="tel:0682326318"
                   className="flex items-center gap-4 group"
@@ -101,23 +127,15 @@ const Contact = () => {
                     <p className="text-charcoal-900 group-hover:text-gold transition-colors font-medium">
                       06 82 32 63 18
                     </p>
-                    <p className="text-sm text-charcoal-500">Mobile</p>
-                  </div>
-                </a>
-                <a
-                  href="tel:0787767118"
-                  className="flex items-center gap-4 group"
-                >
-                  <div className="w-12 h-12 bg-gold/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-gold/30 transition-colors">
-                    <MessageCircle className="w-5 h-5 text-gold" />
-                  </div>
-                  <div>
-                    <p className="text-charcoal-900 group-hover:text-gold transition-colors font-medium">
-                      07 87 76 71 18
+                    <p className="text-sm text-charcoal-500">
+                      Alain —{" "}
+                      <span className="italic">
+                        il ne mord pas, il croque ! 🍪
+                      </span>
                     </p>
-                    <p className="text-sm text-charcoal-500">Mobile</p>
                   </div>
                 </a>
+
                 <a
                   href="mailto:contact@lpbiscuits.fr"
                   className="flex items-center gap-4 group"
@@ -172,11 +190,7 @@ const Contact = () => {
                   <span>Lundi</span>
                   <span>Fermé</span>
                 </div>
-                <div className="mt-3 pt-3 border-t border-white/10">
-                  <p className="text-white/50 text-xs italic">
-                    En été : journée continue et ouvert le lundi
-                  </p>
-                </div>
+                <div className="mt-3 pt-3 border-t border-white/10"></div>
               </div>
             </div>
           </div>
@@ -188,7 +202,7 @@ const Contact = () => {
                 Envoyez-nous un petit mot
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label
@@ -242,11 +256,13 @@ const Contact = () => {
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl bg-white border border-kraft-300 text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition"
                   >
-                    <option value="particulier">Particulier gourmand</option>
-                    <option value="professionnel">
+                    <option value="Particulier gourmand">
+                      Particulier gourmand
+                    </option>
+                    <option value="Professionnel gourmand">
                       Professionnel gourmand
                     </option>
-                    <option value="autre">Autre demande</option>
+                    <option value="Autre demande">Autre demande</option>
                   </select>
                 </div>
 
@@ -271,19 +287,43 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="w-full text-white px-8 py-4 rounded-full font-medium transition-all hover:scale-[1.02] hover:opacity-90 flex items-center justify-center gap-3 shadow-lg"
+                  disabled={sendStatus === "sending"}
+                  className={`w-full text-white px-8 py-4 rounded-full font-medium transition-all flex items-center justify-center gap-3 shadow-lg ${
+                    sendStatus === "sending"
+                      ? "opacity-70 cursor-not-allowed"
+                      : "hover:scale-[1.02] hover:opacity-90"
+                  }`}
                   style={{ backgroundColor: "#1e3a5f" }}
                 >
-                  <span>Envoyer mon message</span>
-                  <Send size={18} />
+                  {sendStatus === "sending" ? (
+                    <>
+                      <Loader2 size={18} className="animate-spin" />
+                      <span>Envoi en cours...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Envoyer mon message</span>
+                      <Send size={18} />
+                    </>
+                  )}
                 </button>
 
-                <p className="text-center text-sm text-charcoal-500">
-                  <span className="font-handwritten text-gold text-lg">
-                    Réponse sous 48h
-                  </span>{" "}
-                  — On adore vous lire !
-                </p>
+                {/* Messages de statut */}
+                {sendStatus === "success" && (
+                  <div className="flex items-center justify-center gap-2 p-3 rounded-xl bg-green-50 border border-green-200 text-green-700 text-sm animate-fade-in">
+                    <CheckCircle size={18} />
+                    <span>Message envoyé avec succès !</span>
+                  </div>
+                )}
+                {sendStatus === "error" && (
+                  <div className="flex items-center justify-center gap-2 p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm animate-fade-in">
+                    <AlertCircle size={18} />
+                    <span>
+                      Erreur lors de l'envoi. Essayez à nouveau ou
+                      contactez-nous par téléphone.
+                    </span>
+                  </div>
+                )}
               </form>
             </div>
           </div>

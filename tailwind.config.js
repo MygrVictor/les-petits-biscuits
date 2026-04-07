@@ -34,7 +34,7 @@ export default {
           yellow: "#f5a623",
           navy: "#1e3a5f",
         },
-        gold: "#d4a84b",
+        gold: "#f5a623",
         navy: "#1e2d3d",
       },
       fontFamily: {

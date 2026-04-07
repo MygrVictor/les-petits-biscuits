@@ -4,35 +4,30 @@ import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 const testimonials = [
   {
     id: 1,
-    name: "Marie-Claire",
-    location: "Pornic",
+    name: "Lauren Ruau",
     rating: 5,
-    text: "Une vraie découverte ! Les sablés diamant sont une tuerie, on sent vraiment le fait maison. Alain est passionné et ça se ressent dans chaque biscuit. Je recommande les yeux fermés !",
-    date: "Février 2026",
+    text: "Passer devant cette petite boutique, avec l'odeur alléchante des petits biscuits vous fera stopper net et vous entrerez et n'hésite tez pas à faire quelques emplettes.. Très très bons et jolis biscuits.. Un régal.. Nous avons pris 3 variétés , Sucullent avec petit café..",
   },
   {
     id: 2,
-    name: "Jean-Philippe",
-    location: "Nantes",
+    name: "Laurence Clary",
+
     rating: 5,
-    text: "Je fais le déplacement depuis Nantes exprès pour leurs financiers aux amandes. Un pur délice ! La boutique est charmante et l'accueil toujours chaleureux.",
-    date: "Janvier 2026",
+    text: "Très bien accueillis par le propriétaire lundi dernier - et une belle surprise de trouver la boutique ouverte ce jour-là. On avait été attirés la veille par la vitrine et on est revenus acheter des biscuits avant de repartir. Seul regret: on n’en a pas acheté assez ! Honnêtement c’était les meilleurs biscuits que nous ayons jamais mangés!! On regrette d’en avoir offert deux paquets, il faudra qu’on revienne à Pornic juste pour en racheter!",
   },
   {
     id: 3,
     name: "Sophie",
-    location: "Saint-Nazaire",
+
     rating: 5,
-    text: "Offerts en cadeau à ma famille, tout le monde a adoré ! Le packaging est soigné et les biscuits délicieux. La crème de caramel au beurre salé est à tomber.",
-    date: "Décembre 2025",
+    text: "Charmant petit magasin avec des biscuits exquis servis par les mains qui les font d’une très grande gentillesse. La terrasse est très agréable même par grosse chaleur. Merci pour cet agréable moment détente inattendu mais plus qu’apprécié!",
   },
   {
     id: 4,
-    name: "François",
-    location: "Pornic",
+    name: "Bostad Mobler",
+
     rating: 5,
-    text: "Client régulier depuis l'ouverture. On ne trouve nulle part ailleurs des biscuits d'une telle qualité. Le rapport qualité-prix est excellent pour de l'artisanal.",
-    date: "Mars 2026",
+    text: "Boutique très accueillante et toute mignonne. L’odeur nous attire immédiatement et le goût est parfait ! Nous avons pris plusieurs paquets de galettes, de quoi régaler les amis 🤗",
   },
 ];
 
@@ -245,7 +240,7 @@ const Testimonials = () => {
         {/* Note moyenne + lien Google */}
         <div className="mt-16 text-center">
           <a
-            href="https://www.google.com/maps/place/Les+Petits+Biscuits/@47.1167,-2.1000,17z"
+            href="https://www.google.com/search?sca_esv=44faa4fe2c212e0b&rlz=1C5CHFA_enFR1133FR1133&hl=fr-FR&sxsrf=ANbL-n567bm9bd-4hTM6v40x0C8DZaBdAA:1775548412361&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOZIUzscVRddjEhff9XOvU8TXjyBiyfZLdaSAumNjMiObGrW_bUILrvFAZHjSEzbUgQ4ntLaYfb080X799M9pxTt6zxxgTPZ-HlCT_IRNCgh44mGrCA%3D%3D&q=Les+petits+biscuits+-+Pornic+Avis&sa=X&ved=2ahUKEwibzJmjoduTAxXkTqQEHS_BKvYQ0bkNegQIIxAF&biw=1665&bih=860&dpr=2"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-4 px-8 py-4 rounded-full hover:opacity-90 transition-opacity"

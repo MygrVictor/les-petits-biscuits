@@ -28,7 +28,7 @@ const Header = () => {
   const navLinks = [
     { href: "#atelier", label: "L'Atelier" },
     { href: "#creations", label: "Nos Créations" },
-    { href: "#prestations", label: "Prestations" },
+    { href: "#coffrets", label: "Coffrets" },
     { href: "#contact", label: "Nous Trouver" },
   ];
 

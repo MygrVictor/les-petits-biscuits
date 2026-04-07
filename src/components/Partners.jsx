@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { Briefcase, Gift, Users, Building2, CheckCircle2 } from "lucide-react";
 
 const avantages = [
   "Fabrication artisanale garantie, en privilégiant la simplicité et la qualité des matières premières",
   "Production à l'atelier-boutique de Pornic",
-  "Packaging kraft élégant et éco-responsable",
-  "Personnalisation",
+  "Savoir-faire local reconnu",
+  "Personnalisation de vos commandes pour toutes les occasions",
+  "Et surtout… c'est bon ! 😋",
 ];
 
 const offres = [
@@ -40,10 +42,9 @@ const offres = [
 ];
 
 const coffrets = [
-  "/products/coffret1-1.JPG",
-  "/products/coffret1-2.JPG",
-  "/products/coffret2-1.JPG",
-  "/products/coffret2-2.JPG",
+  "/products/coffret1-1.jpg",
+  "/products/coffret2-1.jpg",
+  "/products/coffret2-2.jpg",
   "/products/cartes-cadeaux.JPG",
 ];
 
@@ -74,9 +75,11 @@ const references = [
 ];
 
 const Professionnels = () => {
+  const [selectedCoffret, setSelectedCoffret] = useState(null);
+
   return (
     <section
-      id="professionnels"
+      id="coffrets"
       className="py-24 md:py-32 text-white overflow-hidden"
       style={{ backgroundColor: "#1e3a5f" }}
     >
@@ -105,57 +108,36 @@ const Professionnels = () => {
         </div>
 
         {/* Photos de coffrets */}
-        <div className="grid grid-cols-3 gap-3 md:gap-4 mb-16 max-w-3xl mx-auto">
-          {/* Colonne gauche - 2 images superposées */}
-          <div className="flex flex-col gap-3 md:gap-4">
-            <div className="rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-2 gap-3 md:gap-4 mb-16 max-w-3xl mx-auto">
+          {coffrets.map((src, i) => (
+            <div
+              key={i}
+              className="rounded-2xl overflow-hidden cursor-pointer"
+              onClick={() => setSelectedCoffret(src)}
+            >
               <img
-                src={coffrets[0]}
-                alt="Coffret gourmand"
-                className="w-full h-28 md:h-36 object-cover"
+                src={src}
+                alt={i === 3 ? "Cartes cadeaux" : "Coffret gourmand"}
+                className="w-full h-40 md:h-52 object-cover rounded-2xl transition-transform duration-300 hover:scale-105"
                 loading="lazy"
               />
             </div>
-            <div className="rounded-2xl overflow-hidden">
-              <img
-                src={coffrets[1]}
-                alt="Coffret gourmand"
-                className="w-full h-28 md:h-36 object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
+          ))}
+        </div>
 
-          {/* Colonne milieu - 2 images superposées */}
-          <div className="flex flex-col gap-3 md:gap-4">
-            <div className="rounded-2xl overflow-hidden">
-              <img
-                src={coffrets[2]}
-                alt="Coffret gourmand"
-                className="w-full h-28 md:h-36 object-cover"
-                loading="lazy"
-              />
-            </div>
-            <div className="rounded-2xl overflow-hidden">
-              <img
-                src={coffrets[3]}
-                alt="Coffret gourmand"
-                className="w-full h-28 md:h-36 object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          {/* Colonne droite - 1 grande image */}
-          <div className="rounded-2xl overflow-hidden">
+        {/* Overlay photo plein écran */}
+        {selectedCoffret && (
+          <div
+            className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-6 cursor-pointer"
+            onClick={() => setSelectedCoffret(null)}
+          >
             <img
-              src={coffrets[4]}
+              src={selectedCoffret}
               alt="Coffret gourmand"
-              className="w-full h-full object-cover"
-              loading="lazy"
+              className="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl"
             />
           </div>
-        </div>
+        )}
 
         {/* Carousel des offres sur mobile */}
         <div className="md:hidden flex gap-4 overflow-x-auto pb-4 -mx-6 px-6 snap-x snap-mandatory scrollbar-hide mb-16">
@@ -244,13 +226,9 @@ const Professionnels = () => {
                 href="tel:0240393056"
                 className="inline-flex items-center justify-center gap-2 bg-transparent text-white px-6 py-4 rounded-full font-medium transition-all border border-white/30 hover:border-white/60 hover:bg-white/5"
               >
-                <span>02 40 39 30 56</span>
+                <span>06 82 32 63 18</span>
               </a>
             </div>
-
-            <p className="mt-6 font-handwritten text-kraft-400 text-lg">
-              Réponse sous 48h garantie
-            </p>
           </div>
         </div>
 

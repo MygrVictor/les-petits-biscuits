@@ -5,6 +5,9 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1e3a5f" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="manifest" href="/manifest.json" />
 
     <!-- SEO Meta Tags -->
     <title>
@@ -12,13 +15,13 @@
     </title>
     <meta
       name="description"
-      content="Biscuiterie artisanale à Pornic (44). Sablés diamant, financiers, caramels fabriqués à la main sans conservateur ni colorant. Boutique au 11 rue de l'Église. Commandes particuliers & professionnels."
+      content="Biscuiterie artisanale à Pornic (44). Sablés, financiers, madeleines, croquants, tartinables fabriqués à la main sans conservateur. Boutique au 11 rue de l'Église. Coffrets cadeaux, commandes particuliers & professionnels."
     />
     <meta
       name="keywords"
-      content="biscuiterie artisanale Pornic, sablés diamant, biscuits artisanaux Pornic, Les Petits Biscuits, pâtisserie Pornic, biscuits fait maison Loire-Atlantique, coffrets cadeaux biscuits, biscuits professionnels CHR, caramel beurre salé Pornic"
+      content="biscuiterie artisanale Pornic, sablés Pornic, biscuits artisanaux Pornic, Les Petits Biscuits, pâtisserie Pornic, biscuits fait maison Loire-Atlantique, coffrets cadeaux biscuits, biscuits sans conservateur, financiers amandes Pornic, caramel beurre salé Pornic, tartinables artisanaux, biscuits sans gluten Pornic, sablés salés apéritif, fruits secs épices, cadeaux gourmands Pornic, biscuiterie 44210"
     />
-    <meta name="author" content="Les Petits Biscuits" />
+    <meta name="author" content="Les Petits Biscuits Pornic" />
     <meta
       name="robots"
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
@@ -39,18 +42,20 @@
     />
     <meta
       property="og:title"
-      content="Les Petits Biscuits | Biscuiterie Artisanale à Pornic"
+      content="Les Petits Biscuits | Biscuiterie Artisanale à Pornic (44)"
     />
     <meta
       property="og:description"
-      content="Sablés diamant, financiers, caramels... Biscuits artisanaux fabriqués à la main à Pornic, sans conservateur ni colorant. Commandes particuliers & professionnels."
+      content="Sablés, financiers, madeleines, tartinables... Biscuits artisanaux fabriqués à la main à Pornic, sans conservateur. Coffrets cadeaux & commandes sur mesure."
     />
     <meta
       property="og:image"
       content="https://www.lespetitsbiscuits-pornic.fr/logo.png"
     />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="fr_FR" />
-    <meta property="og:site_name" content="Les Petits Biscuits" />
+    <meta property="og:site_name" content="Les Petits Biscuits Pornic" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -60,7 +65,7 @@
     />
     <meta
       name="twitter:description"
-      content="Sablés diamant, financiers, caramels... Biscuits artisanaux fabriqués à la main à Pornic, sans conservateur ni colorant."
+      content="Sablés, financiers, madeleines, tartinables... Biscuits artisanaux fabriqués à la main à Pornic, sans conservateur."
     />
     <meta
       name="twitter:image"
@@ -74,12 +79,15 @@
         "@type": "Bakery",
         "name": "Les Petits Biscuits",
         "alternateName": "Les Petits Biscuits Pornic",
-        "description": "Biscuiterie artisanale à Pornic. Sablés diamant, financiers, caramels, tartinables fabriqués à la main sans conservateur ni colorant.",
+        "description": "Biscuiterie artisanale à Pornic. Sablés, financiers, madeleines, croquants, tartinables fabriqués à la main sans conservateur ni colorant.",
         "url": "https://www.lespetitsbiscuits-pornic.fr",
         "logo": "https://www.lespetitsbiscuits-pornic.fr/logo.png",
-        "image": "https://www.lespetitsbiscuits-pornic.fr/boutique.jpg",
-        "telephone": "+33240393056",
-        "email": "contact@lespetitsbiscuits.com",
+        "image": [
+          "https://www.lespetitsbiscuits-pornic.fr/boutique.jpg",
+          "https://www.lespetitsbiscuits-pornic.fr/logo.png"
+        ],
+        "telephone": ["+33240393056", "+33682326318", "+33787767118"],
+        "email": "contact@lpbiscuits.fr",
         "priceRange": "€-€€",
         "currenciesAccepted": "EUR",
         "paymentAccepted": "Cash, Credit Card",
@@ -96,6 +104,7 @@
           "latitude": 47.1167,
           "longitude": -2.1
         },
+        "hasMap": "https://www.google.com/maps?q=Les+Petits+Biscuits+Pornic",
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
@@ -118,14 +127,14 @@
               "Friday",
               "Saturday"
             ],
-            "opens": "14:30",
-            "closes": "19:00"
+            "opens": "14:00",
+            "closes": "18:00"
           },
           {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": "Sunday",
-            "opens": "10:00",
-            "closes": "12:30"
+            "opens": "09:00",
+            "closes": "13:00"
           }
         ],
         "founder": {
@@ -142,7 +151,13 @@
           },
           "geoRadius": "50000"
         },
-        "sameAs": []
+        "sameAs": ["https://www.facebook.com/lespetitsbiscuitspornic"],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "120",
+          "bestRating": "5"
+        }
       }
     </script>
 
@@ -173,8 +188,8 @@
           {
             "@type": "ListItem",
             "position": 4,
-            "name": "Professionnels",
-            "item": "https://www.lespetitsbiscuits-pornic.fr/#professionnels"
+            "name": "Sur Mesure",
+            "item": "https://www.lespetitsbiscuits-pornic.fr/#coffrets"
           },
           {
             "@type": "ListItem",
@@ -186,19 +201,119 @@
       }
     </script>
 
-    <!-- Données structurées JSON-LD : Produit signature -->
+    <!-- Données structurées JSON-LD : Produits -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Product",
-        "name": "Sablés Diamant",
-        "description": "Petit biscuit au beurre, rond et doré. Le sucre caramélisé lui donne cet aspect brillant si caractéristique. Croustillant dehors, fondant au cœur. Disponible en 6 saveurs : Nature, Chocolat, Citron, Fleur de sel, Cannelle, Noisettes.",
-        "brand": { "@type": "Brand", "name": "Les Petits Biscuits" },
-        "manufacturer": {
-          "@type": "Organization",
-          "name": "Les Petits Biscuits"
-        },
-        "category": "Biscuits artisanaux"
+        "@type": "ItemList",
+        "name": "Nos Créations Artisanales",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "Product",
+              "name": "Sablés Sucrés",
+              "description": "Petit biscuit au beurre, rond et doré. Croustillant dehors, fondant au cœur. 15 saveurs disponibles dont sans gluten.",
+              "brand": { "@type": "Brand", "name": "Les Petits Biscuits" },
+              "category": "Biscuits artisanaux"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "Product",
+              "name": "Sablés Salés",
+              "description": "Sablés croustillants pour l'apéritif. Parmesan & Oignons, Comté & Noix, Olive & Romarin, Tomate & Basilic.",
+              "brand": { "@type": "Brand", "name": "Les Petits Biscuits" },
+              "category": "Biscuits apéritif"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "Product",
+              "name": "Financiers aux Amandes",
+              "description": "Moelleux et savoureux, dans la plus pure tradition artisanale.",
+              "brand": { "@type": "Brand", "name": "Les Petits Biscuits" },
+              "category": "Biscuits artisanaux"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "Product",
+              "name": "Crème de Caramel au Beurre Salé",
+              "description": "Alliance délicieuse de crème épaisse et sucre, agrémentée d'une touche de fleur de sel.",
+              "brand": { "@type": "Brand", "name": "Les Petits Biscuits" },
+              "category": "Tartinables"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+              "@type": "Product",
+              "name": "Fruits Secs aux Épices",
+              "description": "Fruits croquants grillés dans notre chaudron en cuivre, accompagnés d'herbes et d'épices.",
+              "brand": { "@type": "Brand", "name": "Les Petits Biscuits" },
+              "category": "Fruits secs"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Données structurées JSON-LD : FAQ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Où se trouve la biscuiterie Les Petits Biscuits à Pornic ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Notre atelier-boutique se situe au 11 rue de l'Église, 44210 Pornic, en plein cœur historique de la ville."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quels sont les horaires d'ouverture de la biscuiterie ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Du mardi au samedi : 9h30-12h30 / 14h-18h. Dimanche : 9h-13h. Fermé le lundi. En été, ouverture en journée continue."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Proposez-vous des biscuits sans gluten ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui, nous proposons des sablés sans gluten en saveurs Sarrasin Caramel et Vanille, en format 100g."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Peut-on commander des coffrets cadeaux personnalisés ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui, nous réalisons des coffrets sur mesure pour toutes occasions : mariages, baptêmes, anniversaires, événements d'entreprise. Contactez-nous pour un devis personnalisé."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Les biscuits contiennent-ils des conservateurs ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Non, tous nos biscuits sont fabriqués sans conservateur ni colorant artificiel. Nous privilégions la simplicité et la qualité des matières premières."
+            }
+          }
+        ]
       }
     </script>
 

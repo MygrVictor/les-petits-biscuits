@@ -53,8 +53,7 @@ const QuiSommesNous = () => {
               className="font-artisan text-xl md:text-2xl mb-6 font-medium italic"
               style={{ color: "#1e3a5f" }}
             >
-              Une âme gourmande, une histoire de famille qui se transmet de
-              génération en génération.
+              LES PETITS BISCUITS, c'est avant tout une aventure humaine !
             </p>
 
             <div
@@ -62,16 +61,30 @@ const QuiSommesNous = () => {
               style={{ color: "#1e3a5f" }}
             >
               <p>
-                Le goût du bon et du fait maison, c'est ce qui anime
-                <strong> Les Petits Biscuits</strong>, niché dans une ruelle
-                pittoresque du cœur historique de Pornic.
+                <strong>Alain</strong>, ingénieur en agroalimentaire et
+                passionné de bons produits, baigne dans l'univers de
+                l'alimentaire depuis toujours. Entrepreneur dans l'âme, il a
+                lancé sa société il y a 7 ans, après plusieurs expériences dans
+                le secteur. Son envie ?{" "}
+                <strong>
+                  Créer des biscuits gourmands, simples et sincères
+                </strong>
+                , comme ceux qu'on aime partager. Son expertise et son exigence
+                sont au cœur de chacune des recettes.
               </p>
               <p>
-                Ici, tout est fabriqué à la main,{" "}
-                <strong>
-                  sans colorant, sans conservateur, ni arôme artificiel
-                </strong>
-                . Juste des ingrédients nobles et beaucoup d'amour.
+                Il y a quelques mois, <strong>Emmanuelle</strong> a rejoint
+                l'aventure. Après de nombreuses années dans l'industrie, elle a
+                eu envie de revenir à quelque chose de plus concret, de plus
+                authentique. Avec son regard neuf et complémentaire, elle
+                contribue à une{" "}
+                <strong>production artisanale de qualité</strong> et participe
+                chaque jour à faire grandir la biscuiterie.
+              </p>
+              <p>
+                À deux, ils mettent la main à la pâte pour vous proposer des
+                biscuits faits avec le cœur, dans une ambiance conviviale et
+                artisanale.
               </p>
             </div>
 
@@ -88,7 +101,9 @@ const QuiSommesNous = () => {
                 Aujourd'hui, avec cette même passion, j'élabore mes recettes et
                 fabrique mes biscuits."
               </p>
-              <p className="mt-3 text-sm text-white/80">— Alain</p>
+              <p className="mt-3 text-sm" style={{ color: "#1e3a5f" }}>
+                — Alain
+              </p>
             </div>
           </div>
         </div>

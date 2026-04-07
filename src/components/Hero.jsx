@@ -24,7 +24,7 @@ const Hero = () => {
           className="text-center text-xl md:text-2xl lg:text-3xl max-w-md leading-relaxed mb-6 font-handwritten italic"
           style={{ color: "#1e3a5f" }}
         >
-          Simplicité, Authenticité & Savoir-faire artisanal
+          Simplicité, Authenticité, Savoir-faire artisanal, Simplicité, Convivialité
         </h1>
 
         {/* CTA */}

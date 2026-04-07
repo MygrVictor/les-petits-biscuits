@@ -39,9 +39,25 @@ function App() {
       {showTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full text-white shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 border-2 border-gold"
-          style={{ backgroundColor: "#1e3a5f" }}
           aria-label="Retour en haut de page"
+          style={{
+            position: "fixed",
+            bottom: "24px",
+            right: "24px",
+            zIndex: 9999,
+            width: "56px",
+            height: "56px",
+            borderRadius: "50%",
+            backgroundColor: "#1e3a5f",
+            border: "2px solid #d4a84b",
+            color: "white",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+            cursor: "pointer",
+          }}
+          className="flex hover:scale-110 transition-transform"
         >
           <ArrowUp size={22} />
         </button>
