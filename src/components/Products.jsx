@@ -48,12 +48,7 @@ const sablesSales = {
   description:
     "Nos sablés salés sont des biscuits croustillants et savoureux, parfaits pour accompagner vos apéritifs. Fabriqués avec des ingrédients de qualité, ils raviront vos papilles avec leurs saveurs originales.",
   image: "/products/sables-sales.jpg",
-  saveurs: [
-    "Parmesan & Oignons",
-    "Comté & Noix",
-    "Olive & Romarin",
-    "Tomate & Basilic",
-  ],
+  saveurs: ["Parmesan & Oignons"],
 };
 
 const autresDouceurs = [
