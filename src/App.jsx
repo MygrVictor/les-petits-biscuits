@@ -8,6 +8,7 @@ import Testimonials from "./components/Testimonials";
 import Professionnels from "./components/Partners";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [showTop, setShowTop] = useState(false);
@@ -34,6 +35,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <Analytics />
 
       {/* Bouton retour en haut */}
       {showTop && (
