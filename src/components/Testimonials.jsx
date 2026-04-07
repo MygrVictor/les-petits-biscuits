@@ -96,6 +96,7 @@ const Testimonials = () => {
             onClick={goPrev}
             className="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-white shadow-lg border border-kraft-200 transition-all hover:bg-brand-yellow/10 hover:border-brand-yellow"
             style={{ color: "#1e3a5f" }}
+            aria-label="Avis précédent"
           >
             <ChevronLeft size={20} />
           </button>
@@ -103,6 +104,7 @@ const Testimonials = () => {
             onClick={goNext}
             className="absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 p-2 md:p-3 rounded-full bg-white shadow-lg border border-kraft-200 transition-all hover:bg-brand-yellow/10 hover:border-brand-yellow"
             style={{ color: "#1e3a5f" }}
+            aria-label="Avis suivant"
           >
             <ChevronRight size={20} />
           </button>
@@ -207,30 +209,32 @@ const Testimonials = () => {
           </div>
 
           {/* Dots indicateurs - Mobile */}
-          <div className="flex md:hidden justify-center gap-2 mt-8">
+          <div className="flex md:hidden justify-center gap-3 mt-8">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goTo(index)}
+                aria-label={`Avis ${index + 1}`}
                 className={`rounded-full transition-all duration-400 ${
                   currentIndex === index
-                    ? "w-8 h-3 bg-brand-yellow"
-                    : "w-3 h-3 bg-kraft-300 hover:bg-kraft-400"
+                    ? "w-8 h-4 bg-brand-yellow"
+                    : "w-4 h-4 bg-kraft-300 hover:bg-kraft-400"
                 }`}
               />
             ))}
           </div>
 
           {/* Dots indicateurs - Desktop (par paire) */}
-          <div className="hidden md:flex justify-center gap-2 mt-8">
+          <div className="hidden md:flex justify-center gap-3 mt-8">
             {slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goTo(index * 2)}
+                aria-label={`Page d'avis ${index + 1}`}
                 className={`rounded-full transition-all duration-400 ${
                   Math.floor(currentIndex / 2) === index
-                    ? "w-8 h-3 bg-brand-yellow"
-                    : "w-3 h-3 bg-kraft-300 hover:bg-kraft-400"
+                    ? "w-8 h-4 bg-brand-yellow"
+                    : "w-4 h-4 bg-kraft-300 hover:bg-kraft-400"
                 }`}
               />
             ))}

@@ -248,6 +248,8 @@ const Professionnels = () => {
                         alt={ref.name}
                         className="h-12 md:h-14 w-auto object-contain"
                         loading="lazy"
+                        width="56"
+                        height="56"
                       />
                     ) : (
                       <div className="w-20 h-12 md:w-24 md:h-14 rounded-xl border-2 border-dashed border-white/20 flex items-center justify-center">

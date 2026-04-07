@@ -48,11 +48,11 @@ const Header = () => {
           aria-label="Accueil - Les Petits Biscuits"
         >
           <img
-            src="/logonav.png"
+            src="/logonav.webp"
             alt="Les Petits Biscuits - Retour à l'accueil"
             className="h-14 w-auto"
-            width="56"
-            height="56"
+            width="200"
+            height="135"
           />
         </a>
 

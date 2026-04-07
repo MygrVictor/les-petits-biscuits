@@ -12,24 +12,24 @@ const QuiSommesNous = () => {
             {/* Photo principale - grande */}
             <div className="absolute top-0 left-0 w-[65%] h-[60%] z-10">
               <img
-                src="/alain.png"
+                src="/alain.webp"
                 alt="Alain, artisan biscuitier fondateur des Petits Biscuits à Pornic"
                 className="w-full h-full object-cover rounded-2xl shadow-2xl"
                 loading="lazy"
-                width="400"
-                height="500"
+                width="490"
+                height="706"
               />
             </div>
 
             {/* Photo secondaire - en bas à droite */}
             <div className="absolute bottom-0 right-0 w-[55%] h-[50%] z-20">
               <img
-                src="/emanuelle.png"
+                src="/emanuelle.webp"
                 alt="Emanuelle à la boutique Les Petits Biscuits - accueil chaleureux à Pornic"
                 className="w-full h-full object-cover rounded-2xl shadow-2xl border-4 border-white"
                 loading="lazy"
-                width="400"
-                height="400"
+                width="600"
+                height="466"
               />
             </div>
 
@@ -92,7 +92,7 @@ const QuiSommesNous = () => {
             <div className="mt-8 p-6 rounded-xl">
               <p
                 className="font-handwritten text-xl md:text-2xl leading-relaxed"
-                style={{ color: "#f5a623" }}
+                style={{ color: "#b8860b" }}
               >
                 "J'ai plongé pour la première fois mes mains dans la farine chez
                 ma grand-mère. Diplômé d'une école spécialisant ses ingénieurs

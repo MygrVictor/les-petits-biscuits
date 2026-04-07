@@ -207,7 +207,7 @@ const Products = () => {
             Nos Créations
           </h2>
           <p className="mt-6 text-charcoal-600 max-w-2xl mx-auto leading-relaxed">
-            Chaque gourmandise est fabriquée dans notre atelier de Pornic 
+            Chaque gourmandise est fabriquée dans notre atelier de Pornic
           </p>
           <div className="w-16 h-0.5 bg-kraft-400 mx-auto mt-6"></div>
         </div>
@@ -624,17 +624,17 @@ const Products = () => {
           </div>
 
           {/* Dots indicateurs */}
-          <div className="flex justify-center gap-2 mt-8">
+          <div className="flex justify-center gap-3 mt-8">
             {Array.from({ length: maxDouceurIndex + 1 }).map((_, i) => (
               <button
                 key={i}
                 onClick={() => setDouceurIndex(i)}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                className={`h-4 rounded-full transition-all duration-300 ${
                   i === douceurIndex
                     ? "w-8 bg-brand-yellow"
-                    : "w-2 bg-kraft-300 hover:bg-kraft-400"
+                    : "w-4 bg-kraft-300 hover:bg-kraft-400"
                 }`}
-                aria-label={`Slide ${i + 1}`}
+                aria-label={`Douceur ${i + 1}`}
               />
             ))}
           </div>
@@ -988,15 +988,15 @@ const Products = () => {
             </button>
 
             {/* Dots en bas */}
-            <div className="flex justify-center gap-2 pb-5">
+            <div className="flex justify-center gap-3 pb-5">
               {tartinables.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setTartinableIndex(i)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
+                  className={`h-4 rounded-full transition-all duration-300 ${
                     i === tartinableIndex
                       ? "w-8 bg-brand-yellow"
-                      : "w-2 bg-kraft-300 hover:bg-kraft-400"
+                      : "w-4 bg-kraft-300 hover:bg-kraft-400"
                   }`}
                   aria-label={`Tartinable ${i + 1}`}
                 />

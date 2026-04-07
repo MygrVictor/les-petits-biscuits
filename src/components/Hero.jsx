@@ -11,11 +11,11 @@ const Hero = () => {
         {/* Logo image */}
         <div className="mb-4">
           <img
-            src="/logo.png"
+            src="/logo.webp"
             alt="Les Petits Biscuits - Biscuiterie artisanale à Pornic, Loire-Atlantique"
             className="w-full max-w-xs md:max-w-sm lg:max-w-lg mx-auto"
-            width="512"
-            height="512"
+            width="600"
+            height="590"
           />
         </div>
 
@@ -41,12 +41,13 @@ const Hero = () => {
       {/* Partie Droite - Photo de la boutique */}
       <div className="w-full lg:w-1/2 h-[35vh] lg:h-auto lg:min-h-[60vh] relative">
         <img
-          src="/boutique.jpg"
+          src="/boutique.webp"
           alt="Boutique Les Petits Biscuits, 11 rue de l'Église à Pornic - biscuiterie artisanale"
           className="w-full h-full object-cover"
           loading="eager"
+          fetchpriority="high"
           width="800"
-          height="600"
+          height="1066"
         />
         {/* Overlay subtil */}
         <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-black/10"></div>
