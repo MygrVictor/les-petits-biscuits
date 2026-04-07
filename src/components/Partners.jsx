@@ -42,9 +42,9 @@ const offres = [
 ];
 
 const coffrets = [
-  "/products/coffret1-1.jpg",
-  "/products/coffret2-1.jpg",
-  "/products/coffret2-2.jpg",
+  "/products/coffret1-1.JPG",
+  "/products/coffret2-1.JPG",
+  "/products/coffret2-2.JPG",
   "/products/cartes-cadeaux.JPG",
 ];
 
