@@ -11,6 +11,12 @@ const clean = (v, max = 300) =>
     .trim()
     .slice(0, max);
 
+const saleAbbr = (sale) =>
+  String(sale?.code || sale?.id || "VENTE")
+    .toUpperCase()
+    .replace(/[^A-Z0-9]/g, "")
+    .slice(0, 10) || "VENTE";
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -82,7 +88,15 @@ export default async function handler(req, res) {
     const total = round2(lines.reduce((s, l) => s + l.total, 0));
     if (total <= 0) return res.status(400).json({ error: "Montant invalide." });
 
-    const orderId = `CMD-${Date.now().toString(36).toUpperCase()}-${crypto
+    // Format attendu : CMD-ABREVIATIONVENTE-01
+    const abbr = saleAbbr(sale);
+    const [{ orderCount }] = await sql`
+      SELECT COUNT(*)::int AS "orderCount"
+      FROM orders
+      WHERE sale_id = ${sale.id}`;
+    const orderNumber = String(Number(orderCount || 0) + 1).padStart(2, "0");
+    const orderId = `CMD-${abbr}-${orderNumber}`;
+    const checkoutReference = `${orderId}-${crypto
       .randomBytes(2)
       .toString("hex")
       .toUpperCase()}`;
@@ -94,7 +108,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        checkout_reference: orderId,
+        checkout_reference: checkoutReference,
         amount: total,
         currency: "EUR",
         merchant_code: SUMUP_MERCHANT_CODE,

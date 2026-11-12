@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Plus, Trash2, ImagePlus } from "lucide-react";
 import {
-  emptyProduct,
   emptySale,
   emptyPickup,
   PICKUP_TYPES,
@@ -69,13 +68,7 @@ const toSaleProduct = (product) => ({
   discountValue: 10,
 });
 
-const SaleEditor = ({
-  initialSale,
-  catalog = [],
-  onAddToCatalog = () => {},
-  onSave,
-  onCancel,
-}) => {
+const SaleEditor = ({ initialSale, catalog = [], onSave, onCancel }) => {
   const isEdit = Boolean(initialSale?.id);
   const [form, setForm] = useState(
     initialSale
@@ -87,8 +80,6 @@ const SaleEditor = ({
       : emptySale,
   );
   const [libraryId, setLibraryId] = useState("");
-  const [isCustomOpen, setIsCustomOpen] = useState(false);
-  const [newProduct, setNewProduct] = useState(emptyProduct);
   const [error, setError] = useState("");
 
   const setField = (key, value) =>
@@ -123,34 +114,6 @@ const SaleEditor = ({
       products: [...prev.products, toSaleProduct(product)],
     }));
     setLibraryId("");
-  };
-
-  const addCustomProduct = () => {
-    const name = newProduct.name.trim();
-    const description = newProduct.description.trim();
-    const basePrice = Number(newProduct.basePrice);
-    if (!name || !description || !basePrice || !newProduct.image) {
-      setError(
-        "Tous les champs du produit sont obligatoires : titre, description, prix et image.",
-      );
-      return;
-    }
-    const id = `prod-${Date.now()}`;
-    const catalogProduct = {
-      id,
-      name,
-      description,
-      basePrice,
-      image: newProduct.image,
-    };
-    onAddToCatalog(catalogProduct);
-    setForm((prev) => ({
-      ...prev,
-      products: [...prev.products, toSaleProduct(catalogProduct)],
-    }));
-    setNewProduct(emptyProduct);
-    setIsCustomOpen(false);
-    setError("");
   };
 
   const validate = () => {
@@ -377,7 +340,7 @@ const SaleEditor = ({
       <Section
         step="5"
         title="Produits & remises"
-        description="Choisissez dans le catalogue ou créez un produit (il sera ajouté au catalogue)."
+        description="Choisissez les produits depuis le catalogue."
       >
         <div className="mb-5 flex flex-wrap items-center gap-3">
           <select
@@ -404,82 +367,7 @@ const SaleEditor = ({
           >
             <Plus size={16} /> Ajouter
           </button>
-          <button
-            type="button"
-            onClick={() => setIsCustomOpen((v) => !v)}
-            className="rounded-xl border border-[#1e3a5f] px-4 py-2.5 text-sm font-semibold text-[#1e3a5f] hover:bg-[#f3f8ff]"
-          >
-            Nouveau produit
-          </button>
         </div>
-
-        {isCustomOpen && (
-          <div className="mb-5 rounded-xl border border-[#e7edf4] bg-[#f7fafc] p-4">
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="md:col-span-2">
-                <label className={labelClass}>Titre</label>
-                <input
-                  value={newProduct.name}
-                  onChange={(e) =>
-                    setNewProduct((p) => ({ ...p, name: e.target.value }))
-                  }
-                  className={inputClass}
-                  placeholder="Mini coffret assorti"
-                />
-              </div>
-              <div className="md:col-span-2">
-                <label className={labelClass}>Description</label>
-                <textarea
-                  rows={2}
-                  value={newProduct.description}
-                  onChange={(e) =>
-                    setNewProduct((p) => ({
-                      ...p,
-                      description: e.target.value,
-                    }))
-                  }
-                  className={inputClass}
-                />
-              </div>
-              <div>
-                <label className={labelClass}>Prix de base (€)</label>
-                <input
-                  type="number"
-                  min="0"
-                  value={newProduct.basePrice}
-                  onChange={(e) =>
-                    setNewProduct((p) => ({ ...p, basePrice: e.target.value }))
-                  }
-                  className={inputClass}
-                />
-              </div>
-              <ImageField
-                label="Photo"
-                src={newProduct.image}
-                onChange={(v) => setNewProduct((p) => ({ ...p, image: v }))}
-              />
-            </div>
-            <div className="mt-4 flex justify-end gap-3">
-              <button
-                type="button"
-                onClick={() => {
-                  setNewProduct(emptyProduct);
-                  setIsCustomOpen(false);
-                }}
-                className="rounded-xl border border-[#dfe7ef] bg-white px-4 py-2 text-sm font-semibold text-[#1e3a5f]"
-              >
-                Annuler
-              </button>
-              <button
-                type="button"
-                onClick={addCustomProduct}
-                className="rounded-xl bg-[#f5a623] px-4 py-2 text-sm font-semibold text-[#1e3a5f]"
-              >
-                Créer et ajouter à la vente
-              </button>
-            </div>
-          </div>
-        )}
 
         {form.products.length === 0 ? (
           <p className="rounded-xl border border-dashed border-[#dfe7ef] bg-[#f8fafc] p-6 text-center text-sm text-[#36506d]">
