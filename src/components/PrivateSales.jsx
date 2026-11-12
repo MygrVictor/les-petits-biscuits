@@ -4,6 +4,7 @@ import { api } from "../lib/api";
 // Apple Pay / Google Pay (Swift Checkout). Clé PUBLIQUE sup_pk_… : peut être exposée.
 const SUMUP_PUBLIC_KEY = import.meta.env.VITE_SUMUP_PUBLIC_KEY;
 const SWIFT_SDK_URL = "https://js.sumup.com/swift-checkout/v1/sdk.js";
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const loadSwiftSdk = () =>
   new Promise((resolve, reject) => {
@@ -268,6 +269,31 @@ const PrivateSales = () => {
     setStep("done");
   };
 
+  // SumUp peut remonter PAID avec un léger délai ; on sonde le statut quelques secondes.
+  const confirmPaidOrder = async (checkoutId) => {
+    let last = null;
+    for (let i = 0; i < 8; i += 1) {
+      try {
+        const data = await api(
+          `/api/sumup/status?id=${encodeURIComponent(checkoutId)}`,
+        );
+        last = data;
+        if (data.status === "PAID" && data.order) return data.order;
+        if (data.status === "FAILED" || data.status === "CANCELLED") break;
+      } catch (err) {
+        last = { error: err.message };
+      }
+      await wait(1200);
+    }
+    const reason =
+      last?.error || (last?.status ? `Statut SumUp: ${last.status}` : "");
+    throw new Error(
+      reason
+        ? `Le paiement n’a pas été confirmé (${reason}).`
+        : "Le paiement n’a pas été confirmé. Veuillez réessayer.",
+    );
+  };
+
   const closeSumUp = () => {
     try {
       sumupCardRef.current?.unmount();
@@ -303,22 +329,11 @@ const PrivateSales = () => {
               return;
             }
             if (type !== "success") return;
-            // Vérification serveur du statut réel
             try {
-              const r = await fetch(
-                `/api/sumup/status?id=${encodeURIComponent(sumupCheckout.id)}`,
-              );
-              const data = await r.json();
-              if (data.status === "PAID" && data.order) {
-                finalizeOrder(data.order);
-              } else {
-                setCustomerError(
-                  "Le paiement n’a pas été confirmé. Veuillez réessayer.",
-                );
-                closeSumUp();
-              }
-            } catch {
-              setCustomerError("Impossible de vérifier le paiement.");
+              const order = await confirmPaidOrder(sumupCheckout.id);
+              finalizeOrder(order);
+            } catch (err) {
+              setCustomerError(err.message);
               closeSumUp();
             }
           },
@@ -370,17 +385,8 @@ const PrivateSales = () => {
             .then((paymentResponse) =>
               client.processCheckout(sumupCheckout.id, paymentResponse),
             )
-            .then(async () => {
-              // Le serveur reste la source de vérité
-              const data = await api(
-                `/api/sumup/status?id=${encodeURIComponent(sumupCheckout.id)}`,
-              );
-              if (data.status === "PAID" && data.order) {
-                finalizeOrder(data.order);
-              } else {
-                setCustomerError("Le paiement n’a pas été confirmé.");
-              }
-            })
+            .then(() => confirmPaidOrder(sumupCheckout.id))
+            .then((order) => finalizeOrder(order))
             .catch((error) => {
               if (
                 error instanceof
